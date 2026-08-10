@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>logo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <span id="counter" class="counter"></span>
+  <div class="toggle" role="group" aria-label="View">
+    <button id="view-full" aria-label="Single view" aria-pressed="true">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="2"/></svg>
+    </button>
+    <button id="view-grid" aria-label="Grid view" aria-pressed="false">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.5"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="full" class="full">
+  <button id="prev" class="nav prev" aria-label="Previous">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+  </button>
+  <figure id="stage"><img id="photo" alt=""></figure>
+  <button id="next" class="nav next" aria-label="Next">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
+  </button>
+</main>
+
+<main id="grid" class="grid" hidden></main>
+
+<script src="manifest.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

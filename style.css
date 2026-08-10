@@ -1,0 +1,196 @@
+:root {
+  --bg: #ececed;
+  --surface: #fff;
+  --line: rgba(0, 0, 0, .10);
+  --ink: #16161a;
+  --muted: #74747c;
+  --radius: 14px;
+  --header: 52px;
+}
+
+* { box-sizing: border-box; }
+
+/* display:flex/grid below would otherwise beat the hidden attribute */
+[hidden] { display: none !important; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 13px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- header ---------- */
+
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: linear-gradient(var(--bg) 60%, transparent);
+}
+
+.counter {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.counter b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.toggle {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.toggle button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.toggle button svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+.toggle button:hover { color: var(--ink); }
+.toggle button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+/* ---------- single view ---------- */
+
+.full {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header) + 8px) 16px 24px;
+  overflow: hidden;
+}
+
+.full figure {
+  margin: 0;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+}
+
+.full img {
+  width: auto;
+  height: auto;
+  max-width: min(100%, 900px);
+  max-height: calc(100dvh - var(--header) - 48px);
+  object-fit: contain;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(6px);
+  color: var(--ink);
+  cursor: pointer;
+  opacity: .55;
+  transition: opacity .15s;
+}
+.nav:hover { opacity: 1; }
+.nav svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.prev { left: 16px; }
+.next { right: 16px; }
+
+/* ---------- grid view ---------- */
+
+.grid {
+  padding: calc(var(--header) + 6px) 16px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.grid button {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 1;
+  transition: border-color .15s, transform .15s;
+}
+.grid button:hover {
+  border-color: rgba(0, 0, 0, .4);
+  transform: translateY(-2px);
+}
+
+.grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.grid span {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(22, 22, 26, .78);
+  color: #fff;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .03em;
+}
+
+@media (max-width: 640px) {
+  .nav { width: 36px; height: 36px; }
+  .prev { left: 8px; }
+  .next { right: 8px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+}

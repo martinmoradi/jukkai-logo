@@ -1,2 +1,5 @@
 source/
 .DS_Store
+
+# local test harnesses
+_*.html

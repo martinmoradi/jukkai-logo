@@ -7,6 +7,8 @@
 // key, because there is a single selection — no per-user state.
 
 const ALLOWED_ORIGINS = [
+  'https://jukkai-logo.martinmoradi.com',
+  // Kept through the move off GitHub Pages; drop once that site is retired.
   'https://martinmoradi.github.io',
   'http://localhost:8777',
 ];

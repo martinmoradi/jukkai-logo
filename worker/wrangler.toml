@@ -2,8 +2,7 @@ name = "jukkai-logo-selection"
 main = "worker.js"
 compatibility_date = "2026-08-10"
 
-# Create with:  npx wrangler kv namespace create SELECTION
-# then paste the returned id below.
+# Created with:  npx wrangler kv namespace create SELECTION
 [[kv_namespaces]]
 binding = "SELECTION"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "707580c010fc471d9f9b0f25461a050f"

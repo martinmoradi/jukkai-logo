@@ -1,6 +1,15 @@
 name = "jukkai-logo-selection"
 main = "worker.js"
 compatibility_date = "2026-08-10"
+account_id = "d1fc0c4a9742edd2a7237163ce44c4d6"
+
+# Served from its own hostname rather than workers.dev; wrangler manages the
+# DNS record. `workers_dev = false` keeps the deploy from trying to register an
+# account-wide workers.dev subdomain it does not need.
+workers_dev = false
+routes = [
+  { pattern = "jukkai-logo-sync.martinmoradi.com", custom_domain = true },
+]
 
 # Created with:  npx wrangler kv namespace create SELECTION
 [[kv_namespaces]]

@@ -3,7 +3,7 @@
 Numbered gallery of the generated logo candidates, with a hide/bring-back pass
 for narrowing them down.
 
-Live: https://martinmoradi.github.io/jukkai-logo/
+Live: https://jukkai-logo.martinmoradi.com
 
 ## View
 
@@ -25,7 +25,7 @@ how many images are still in play.
 
 1. Drop the new files into `source/`.
 2. `node build.js`
-3. Commit and push — GitHub Pages redeploys on its own.
+3. Commit and push — Cloudflare Pages redeploys on its own.
 
 Numbers already assigned never move — new files get the next free number.
 Requires ImageMagick (`magick`) on PATH. `source/` stays out of git; the
@@ -37,16 +37,16 @@ There is one shared selection, not one per visitor. It lives in localStorage
 and, once `worker/` is deployed, is mirrored to a Cloudflare Worker so it
 follows the client across devices and is visible to everyone opening the page.
 
-Deploy:
+It is deployed at `https://jukkai-logo-sync.martinmoradi.com` and `config.js`
+points at it. Redeploy after changing `worker/`:
 
 ```sh
 cd worker
-npx wrangler kv namespace create SELECTION   # paste the id into wrangler.toml
 npx wrangler deploy
 ```
 
-Then put the Worker URL in `config.js` and push. Leaving `SYNC_URL` empty keeps
-the selection on one device.
+The KV namespace and the hostname are already recorded in `wrangler.toml`.
+Leaving `SYNC_URL` empty in `config.js` keeps the selection on one device.
 
 The contract is two calls on one key:
 
